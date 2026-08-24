@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { getDashboardData } from "@/lib/queries";
 
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {

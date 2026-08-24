@@ -8,6 +8,7 @@ import { StatusChanger } from "@/components/projects/StatusChanger";
 import { getProjectBySlug } from "@/lib/queries";
 import { formatDateTime } from "@/lib/utils";
 
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({

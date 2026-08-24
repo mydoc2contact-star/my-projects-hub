@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { ProjectForm } from "@/components/projects/ProjectForm";
 import { getProjectBySlug } from "@/lib/queries";
 
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export default async function EditProjectPage({

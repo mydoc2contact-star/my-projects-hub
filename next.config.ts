@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "12mb",
     },
   },
+  serverExternalPackages: ["@prisma/client", "prisma"],
+  outputFileTracingIncludes: {
+    "/*": ["./node_modules/.prisma/client/**"],
+  },
   turbopack: {
     root: path.join(__dirname),
   },

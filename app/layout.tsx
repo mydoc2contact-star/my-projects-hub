@@ -9,6 +9,9 @@ const font = IBM_Plex_Sans_Arabic({
   weight: ["400", "500", "600", "700"],
 });
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: {
     default: "My Projects Hub",

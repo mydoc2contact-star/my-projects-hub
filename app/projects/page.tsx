@@ -5,6 +5,7 @@ import { ProjectsToolbar } from "@/components/projects/ProjectsToolbar";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { getProjects } from "@/lib/queries";
 
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export default async function ProjectsPage({
