@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum ProjectStatus {
+  IDEA
+  RESEARCH
+  FUTURE
+  IN_PROGRESS
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+model Project {
+  id                 String        @id @default(cuid())
+  name               String
+  slug               String        @unique
+  shortDescription   String        @map("short_description")
+  mainImage          String?       @map("main_image")
+  idea               String        @default("")
+  problem            String        @default("")
+  solution           String        @default("")
+  vision             String        @default("")
+  goals              String        @default("")
+  targetAudience     String        @default("") @map("target_audience")
+  businessModel      String        @default("") @map("business_model")
+  developmentStages  String        @default("") @map("development_stages")
+  notes              String        @default("")
+  status             ProjectStatus @default(IDEA)
+  createdAt          DateTime      @default(now()) @map("created_at")
+  updatedAt          DateTime      @updatedAt @map("updated_at")
+  images             ProjectImage[]
+  links              ProjectLink[]
+
+  @@index([status])
+  @@index([updatedAt])
+  @@map("projects")
+}
+
+model ProjectImage {
+  id        String   @id @default(cuid())
+  projectId String   @map("project_id")
+  imageUrl  String   @map("image_url")
+  createdAt DateTime @default(now()) @map("created_at")
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@map("project_images")
+}
+
+model ProjectLink {
+  id        String   @id @default(cuid())
+  projectId String   @map("project_id")
+  title     String
+  url       String
+  createdAt DateTime @default(now()) @map("created_at")
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@map("project_links")
+}
