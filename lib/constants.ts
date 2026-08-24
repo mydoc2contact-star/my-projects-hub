@@ -3,12 +3,7 @@ import { ProjectStatus } from "@prisma/client";
 export const APP_NAME = "My Projects Hub";
 export const APP_TAGLINE = "مكتبة استراتيجية لمشاريعك";
 
-export const APP_URL = (
-  process.env.APP_URL ||
-  (process.env.NODE_ENV === "production"
-    ? "https://mouiz4business.netlify.app"
-    : "http://localhost:3000")
-).replace(/\/$/, "");
+export const APP_URL = (process.env.APP_URL || "http://localhost:3000").replace(/\/$/, "");
 
 export function absoluteUrl(path = "") {
   const normalized = path.startsWith("/") ? path : `/${path}`;
